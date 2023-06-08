@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
+import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import {
   TimerWrapper,
@@ -8,7 +9,7 @@ import {
   TimerColonBox,
 } from "../components/Timer/Timer.styled.ts";
 import { Button } from "../components/Button/Button.styled.ts";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { Counter, CounterLabel } from "../components/Counter/Counter.styled.ts";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,9 +21,11 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const [minutes, setMinutes] = useState(2);
+  const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
   const [isTimerPlaying, setIsTimerPlaying] = useState(false);
+  const [rounds, setRounds] = useState(0);
+  const [goals, setGoals] = useState(0);
 
   const handleClick = () => {
     setIsTimerPlaying((prev) => !prev);
@@ -36,7 +39,7 @@ function Home() {
         }
         if (seconds === 0) {
           if (minutes === 0) {
-            setMinutes(2);
+            setMinutes(1);
             setSeconds(0);
             setIsTimerPlaying(false);
             clearInterval(timer);
@@ -71,6 +74,18 @@ function Home() {
             >
               <ButtonIcon icon={!isTimerPlaying ? faPlay : faPause} />
             </Button>
+          </TimerWrapper>
+        </Container>
+        <Container>
+          <TimerWrapper>
+            <Counter>
+              <CounterLabel>{rounds}/4</CounterLabel>
+              <CounterLabel>ROUND</CounterLabel>
+            </Counter>
+            <Counter>
+              <CounterLabel>{goals}/12</CounterLabel>
+              <CounterLabel>GOAL</CounterLabel>
+            </Counter>
           </TimerWrapper>
         </Container>
       </Wrapper>

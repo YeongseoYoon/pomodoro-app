@@ -7,10 +7,10 @@ export const Button = styled(motion.div)`
   justify-content: center;
   align-items: center;
 
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   cursor: pointer;
-  font-size: 100px;
+  font-size: 90px;
   border-radius: 50%;
   background-color: rgb(0 0 0 / 54%);
 `;
