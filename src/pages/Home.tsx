@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
 
 import {
   TimerWrapper,
   TimerBox,
   TimerColonBox,
 } from "../components/Timer/Timer.styled.ts";
-
 import { Button } from "../components/Button/Button.styled.ts";
-
-import { useEffect, useState } from "react";
+import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,22 +30,27 @@ function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds((prev) => prev - 1);
-      }
-      if (seconds === 0) {
-        if (minutes === 0) {
-          setMinutes(1);
-          setSeconds(0);
-          clearInterval(timer);
-        } else {
-          setMinutes((prev) => prev - 1);
-          setSeconds(59);
+      if (isButtonToggled) {
+        if (seconds > 0) {
+          setSeconds((prev) => prev - 1);
         }
+        if (seconds === 0) {
+          if (minutes === 0) {
+            setMinutes(1);
+            setSeconds(0);
+            setIsButtonToggled(false);
+            clearInterval(timer);
+          } else {
+            setMinutes((prev) => prev - 1);
+            setSeconds(59);
+          }
+        }
+      } else {
+        clearInterval(timer);
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [minutes, seconds]);
+  }, [minutes, seconds, isButtonToggled]);
 
   return (
     <>
@@ -64,11 +69,10 @@ function Home() {
               whileTap={{ scale: 0.8 }}
               onClick={handleClick}
             >
-              {isButtonToggled ? <LogoutButton /> : <LogoutButton />}
+              <ButtonIcon icon={!isButtonToggled ? faPlay : faPause} />
             </Button>
           </TimerWrapper>
         </Container>
-        // round/goal
       </Wrapper>
     </>
   );
