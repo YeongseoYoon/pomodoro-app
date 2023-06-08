@@ -20,25 +20,25 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(2);
   const [seconds, setSeconds] = useState(0);
-  const [isButtonToggled, setIsButtonToggled] = useState(false);
+  const [isTimerPlaying, setIsTimerPlaying] = useState(false);
 
   const handleClick = () => {
-    setIsButtonToggled((prev) => !prev);
+    setIsTimerPlaying((prev) => !prev);
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (isButtonToggled) {
+      if (isTimerPlaying) {
         if (seconds > 0) {
           setSeconds((prev) => prev - 1);
         }
         if (seconds === 0) {
           if (minutes === 0) {
-            setMinutes(1);
+            setMinutes(2);
             setSeconds(0);
-            setIsButtonToggled(false);
+            setIsTimerPlaying(false);
             clearInterval(timer);
           } else {
             setMinutes((prev) => prev - 1);
@@ -50,7 +50,7 @@ function Home() {
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [minutes, seconds, isButtonToggled]);
+  }, [minutes, seconds, isTimerPlaying]);
 
   return (
     <>
@@ -69,7 +69,7 @@ function Home() {
               whileTap={{ scale: 0.8 }}
               onClick={handleClick}
             >
-              <ButtonIcon icon={!isButtonToggled ? faPlay : faPause} />
+              <ButtonIcon icon={!isTimerPlaying ? faPlay : faPause} />
             </Button>
           </TimerWrapper>
         </Container>
