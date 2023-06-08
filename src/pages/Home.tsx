@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,6 +9,7 @@ import {
 } from "../components/Timer/Timer.styled.ts";
 import { Button } from "../components/Button/Button.styled.ts";
 import { Counter, CounterLabel } from "../components/Counter/Counter.styled.ts";
+import useTimer from "../hooks/useTimer.ts";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,40 +21,8 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const [minutes, setMinutes] = useState(1);
-  const [seconds, setSeconds] = useState(0);
-  const [isTimerPlaying, setIsTimerPlaying] = useState(false);
-  const [rounds, setRounds] = useState(0);
-  const [goals, setGoals] = useState(0);
-
-  const handleClick = () => {
-    setIsTimerPlaying((prev) => !prev);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (isTimerPlaying) {
-        if (seconds > 0) {
-          setSeconds((prev) => prev - 1);
-        }
-        if (seconds === 0) {
-          if (minutes === 0) {
-            setMinutes(1);
-            setSeconds(0);
-            setIsTimerPlaying(false);
-            clearInterval(timer);
-          } else {
-            setMinutes((prev) => prev - 1);
-            setSeconds(59);
-          }
-        }
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [minutes, seconds, isTimerPlaying]);
-
+  const { minutes, seconds, isTimerPlaying, rounds, goals, handleClick } =
+    useTimer();
   return (
     <>
       <Wrapper>
