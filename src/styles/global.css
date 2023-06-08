@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  cursor: default;
+
+  font-family: "Chewy", cursive;
+  color: white;
+  background-color: tomato;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  height: 60px;
+}
+
+footer {
+  height: 40px;
+  margin-top: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
