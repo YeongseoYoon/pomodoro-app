@@ -133,9 +133,28 @@ table {
   box-sizing: border-box;
 }
 body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+
   font-family: "Chewy", cursive;
   color: white;
-  background-color: rgb(86, 85, 85);
+  background-color: tomato;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  height: 60px;
+}
+
+footer {
+  height: 40px;
+  margin-top: auto;
 }
 
 a {
