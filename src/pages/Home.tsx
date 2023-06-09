@@ -23,20 +23,15 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const [isTimerPlaying, setIsTimerPlaying] = useState(false);
-
-  const handleClick = () => {
-    setIsTimerPlaying((prev) => !prev);
-  };
-  //const { isTimerPlaying, rounds, goals, handleClick } = useTimer();
+  const { time, toggleIsTimerPlaying, isTimerPlaying } = useTimer();
   return (
     <>
       <Wrapper>
         <Container>
           <TimerWrapper>
-            <TimerBox label="minute" isTimerPlaying={isTimerPlaying} />
+            <TimerBox label="minute" time={time} />
             <TimerColonCard>:</TimerColonCard>
-            <TimerBox label="second" />
+            <TimerBox label="second" time={time} />
           </TimerWrapper>
         </Container>
         <Container>
@@ -44,7 +39,7 @@ function Home() {
             <Button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.8 }}
-              onClick={handleClick}
+              onClick={toggleIsTimerPlaying}
             >
               <ButtonIcon icon={!isTimerPlaying ? faPlay : faPause} />
             </Button>

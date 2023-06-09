@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
-
-import { MILLI_SECOND, TIME } from "../../constants/constants";
 import { TimerCard } from "./Timer.styled";
 import { formatTimeDigits } from "../../utils/formatTimeDigits";
 
 interface TimerBoxProps {
   label: string;
-  isTimerPlaying: boolean;
+  time: number;
 }
 
-function TimerBox({ label, isTimerPlaying }: TimerBoxProps) {
-  const [time, setTime] = useState(TIME * 60);
+function TimerBox({ label, time }: TimerBoxProps) {
   const minutes = formatTimeDigits(Math.floor(time / 60));
   const seconds = formatTimeDigits(time % 60);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTime((prevTime) => prevTime - 1);
-    }, MILLI_SECOND);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
 
   return (
     <>
