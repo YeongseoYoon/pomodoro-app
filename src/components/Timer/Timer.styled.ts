@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const TimerWrapper = styled.div`
@@ -8,7 +9,7 @@ export const TimerWrapper = styled.div`
   margin: 20px 0px;
 `;
 
-export const TimerBox = styled.div`
+export const TimerCard = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +24,7 @@ export const TimerBox = styled.div`
   border-radius: 10px;
 `;
 
-export const TimerColonBox = styled(TimerBox)`
+export const TimerColonCard = styled(TimerCard)`
   width: auto;
   border-radius: 0px;
   color: white;

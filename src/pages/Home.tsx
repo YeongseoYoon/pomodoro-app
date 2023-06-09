@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 import {
   TimerWrapper,
-  TimerBox,
-  TimerColonBox,
+  TimerColonCard,
 } from "../components/Timer/Timer.styled.ts";
+import TimerBox from "../components/Timer/TimerBox.tsx";
 import { Button } from "../components/Button/Button.styled.ts";
 import { Counter, CounterLabel } from "../components/Counter/Counter.styled.ts";
+import { GOAL_LIMIT, ROUND_LIMIT } from "../constants/constants.ts";
 import useTimer from "../hooks/useTimer.ts";
 
 const Wrapper = styled.div`
@@ -21,16 +23,20 @@ const Container = styled.div`
 `;
 
 function Home() {
-  const { minutes, seconds, isTimerPlaying, rounds, goals, handleClick } =
-    useTimer();
+  const [isTimerPlaying, setIsTimerPlaying] = useState(false);
+
+  const handleClick = () => {
+    setIsTimerPlaying((prev) => !prev);
+  };
+  //const { isTimerPlaying, rounds, goals, handleClick } = useTimer();
   return (
     <>
       <Wrapper>
         <Container>
           <TimerWrapper>
-            <TimerBox>{minutes < 10 ? `0${minutes}` : minutes}</TimerBox>
-            <TimerColonBox>:</TimerColonBox>
-            <TimerBox>{seconds < 10 ? `0${seconds}` : seconds}</TimerBox>
+            <TimerBox label="minute" isTimerPlaying={isTimerPlaying} />
+            <TimerColonCard>:</TimerColonCard>
+            <TimerBox label="second" />
           </TimerWrapper>
         </Container>
         <Container>
@@ -46,14 +52,19 @@ function Home() {
         </Container>
         <Container>
           <TimerWrapper>
+            {/*
             <Counter>
-              <CounterLabel>{rounds}/4</CounterLabel>
+              <CounterLabel>
+                {rounds}/{ROUND_LIMIT}
+              </CounterLabel>
               <CounterLabel>ROUND</CounterLabel>
             </Counter>
             <Counter>
-              <CounterLabel>{goals}/12</CounterLabel>
+              <CounterLabel>
+                {goals}/{GOAL_LIMIT}
+              </CounterLabel>
               <CounterLabel>GOAL</CounterLabel>
-            </Counter>
+  </Counter>*/}
           </TimerWrapper>
         </Container>
       </Wrapper>
