@@ -1,5 +1,6 @@
 import { TimerCard } from "./Timer.styled";
-import { formatTimeDigits } from "../../utils/formatTimeDigits";
+
+import { formatTimeDigits } from "../../utils";
 
 interface TimerBoxProps {
   label: string;

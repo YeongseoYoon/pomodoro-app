@@ -1,26 +1,8 @@
-import styled from "styled-components";
-
-import {
-  TimerWrapper,
-  TimerColonCard,
-} from "../components/timer/Timer.styled.ts";
-import { TimerBox } from "../components";
-import { Counter } from "../components";
-import { ControlButton } from "../components";
-
-import { useTimer } from "../hooks";
-import { useCounter } from "../hooks";
-
-import { ROUND_TOTAL, GOAL_TOTAL } from "../constants/constants.ts";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Container = styled.div`
-  width: 70%;
-`;
+import { TimerBox, ControlButton, Counter } from "../components";
+import { TimerColonCard } from "../components/timer/Timer.styled";
+import { GOAL_TOTAL, ROUND_TOTAL } from "../constants/constants.ts";
+import { useTimer, useCounter } from "../hooks";
+import { Wrapper, Container, TimerWrapper } from "./Home.styled";
 
 function Home() {
   const { time, toggleIsTimerPlaying, isTimerPlaying } = useTimer();

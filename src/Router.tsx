@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Root from "./Root";
-import ErrorBoundary from "./components/error/ErrorBoundary";
+import { ErrorBoundary } from "./components";
 
 const Router = createBrowserRouter([
   {
