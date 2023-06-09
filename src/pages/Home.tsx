@@ -47,19 +47,14 @@ function Home() {
         </Container>
         <Container>
           <TimerWrapper>
-            {/*
             <Counter>
-              <CounterLabel>
-                {rounds}/{ROUND_LIMIT}
-              </CounterLabel>
+              <CounterLabel>0/{ROUND_LIMIT}</CounterLabel>
               <CounterLabel>ROUND</CounterLabel>
             </Counter>
             <Counter>
-              <CounterLabel>
-                {goals}/{GOAL_LIMIT}
-              </CounterLabel>
+              <CounterLabel>0/{GOAL_LIMIT}</CounterLabel>
               <CounterLabel>GOAL</CounterLabel>
-  </Counter>*/}
+            </Counter>
           </TimerWrapper>
         </Container>
       </Wrapper>
