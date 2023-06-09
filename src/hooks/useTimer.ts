@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { TIME } from "../constants/constants";
+import { TIME, MILLI_SECOND } from "../constants/constants";
 
 const useTimer = () => {
   const [time, setTime] = useState(TIME * 60);
@@ -12,15 +12,6 @@ const useTimer = () => {
   };
 
   const resetTimer = () => {
-    //setRounds((prev) => prev + 1);
-
-    /*if (rounds === 3) {
-      setRounds(0);
-      setGoals((prev) => prev + 1);
-    }
-    if (goals === 11) {
-      setGoals(0);
-    }*/
     setTime(TIME * 60);
     setIsTimerPlaying(false);
     //
@@ -34,7 +25,7 @@ const useTimer = () => {
         } else {
           setTime((prevTime) => prevTime - 1);
         }
-      }, 1000);
+      }, MILLI_SECOND);
     } else {
       clearInterval(timer);
     }

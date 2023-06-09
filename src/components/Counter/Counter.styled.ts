@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Counter = styled.div`
+export const CounterWrapper = styled.div`
   text-align: center;
   font-size: 40px;
 

@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 import {
   TimerWrapper,
   TimerColonCard,
-} from "../components/Timer/Timer.styled.ts";
-import TimerBox from "../components/Timer/TimerBox.tsx";
-import { Button } from "../components/Button/Button.styled.ts";
-import { Counter, CounterLabel } from "../components/Counter/Counter.styled.ts";
-import { GOAL_LIMIT, ROUND_LIMIT } from "../constants/constants.ts";
+} from "../components/timer/Timer.styled.ts";
+import TimerBox from "../components/timer/TimerBox.tsx";
+import { Button } from "../components/button/Button.styled.ts";
+import Counter from "../components/counter/Counter.tsx";
 import useTimer from "../hooks/useTimer.ts";
 
 const Wrapper = styled.div`
@@ -47,14 +45,8 @@ function Home() {
         </Container>
         <Container>
           <TimerWrapper>
-            <Counter>
-              <CounterLabel>0/{ROUND_LIMIT}</CounterLabel>
-              <CounterLabel>ROUND</CounterLabel>
-            </Counter>
-            <Counter>
-              <CounterLabel>0/{GOAL_LIMIT}</CounterLabel>
-              <CounterLabel>GOAL</CounterLabel>
-            </Counter>
+            <Counter label="round" time={time} />
+            <Counter label="goal" time={time} />
           </TimerWrapper>
         </Container>
       </Wrapper>
