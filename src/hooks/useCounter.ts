@@ -7,7 +7,7 @@ const useCounter = (total: number, time: number) => {
     if (time === 0) {
       setCount((prev) => prev + 1);
     }
-  }, [time, count, total]);
+  }, [time]);
 
   useEffect(() => {
     if (count !== 0 && count % total === 0) {
