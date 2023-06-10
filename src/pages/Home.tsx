@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import {
   TimerWrapper,
   TimerColonCard,
 } from "../components/timer/Timer.styled.ts";
-import TimerBox from "../components/timer/TimerBox.tsx";
-import { Button } from "../components/button/Button.styled.ts";
-import Counter from "../components/counter/Counter.tsx";
+import { TimerBox } from "../components";
+import { Counter } from "../components";
+import { ControlButton } from "../components";
+
 import { useTimer } from "../hooks";
 import { useCounter } from "../hooks";
 
@@ -46,13 +45,10 @@ function Home() {
         </Container>
         <Container>
           <TimerWrapper>
-            <Button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.8 }}
+            <ControlButton
               onClick={toggleIsTimerPlaying}
-            >
-              <ButtonIcon icon={!isTimerPlaying ? faPlay : faPause} />
-            </Button>
+              isTimerPlaying={isTimerPlaying}
+            />
           </TimerWrapper>
         </Container>
         <Container>

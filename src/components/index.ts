@@ -1,6 +1,8 @@
 export { default as Header } from "./common/Header";
 export { default as Footer } from "./common/Footer";
 
+export { default as ControlButton } from "./button/Button";
+
 export { default as Counter } from "./counter/Counter";
 
 export { default as ErrorBoundary } from "./error/ErrorBoundary";
