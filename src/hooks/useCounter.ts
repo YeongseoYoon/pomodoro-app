@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 
-const useCounter = (total: number, time: number) => {
+interface CounterProp {
+  total: number;
+  time?: number;
+  callbackFn?: () => void;
+}
+
+const useCounter = ({ total, time, callbackFn }: CounterProp) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (time === 0) {
-      setCount((prev) => prev + 1);
+      counterFn();
     }
   }, [time]);
 
-  useEffect(() => {
-    if (count !== 0 && count % total === 0) {
-      setCount(0);
+  const counterFn = () => {
+    const next = (count + 1) % total;
+    if (next === 0) {
+      callbackFn?.();
     }
-  }, [count, total]);
-
-  return { count, counterTotal: total };
+    setCount(next);
+  };
+  return { count, counterFn };
 };
 
 export default useCounter;
