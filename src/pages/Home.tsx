@@ -1,29 +1,20 @@
-import styled from "styled-components";
-import { FontAwesomeIcon as ButtonIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-
-import {
-  TimerWrapper,
-  TimerColonCard,
-} from "../components/Timer/Timer.styled.ts";
-import TimerBox from "../components/Timer/TimerBox.tsx";
-import { Button } from "../components/Button/Button.styled.ts";
-import { Counter, CounterLabel } from "../components/Counter/Counter.styled.ts";
-import { GOAL_LIMIT, ROUND_LIMIT } from "../constants/constants.ts";
-import useTimer from "../hooks/useTimer.ts";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Container = styled.div`
-  width: 70%;
-`;
+import { TimerBox, ControlButton, Counter } from "../components";
+import { TimerColonCard } from "../components/timer/Timer.styled";
+import { GOAL_TOTAL, ROUND_TOTAL } from "../constants/constants.ts";
+import { useTimer, useCounter } from "../hooks";
+import { Wrapper, Container, TimerWrapper } from "./Home.styled";
 
 function Home() {
   const { time, toggleIsTimerPlaying, isTimerPlaying } = useTimer();
+  const { count: goalCount, counterFn: goalCounter } = useCounter({
+    total: GOAL_TOTAL,
+  });
+  const { count: roundCount } = useCounter({
+    total: ROUND_TOTAL,
+    time,
+    callbackFn: goalCounter,
+  });
+
   return (
     <>
       <Wrapper>
@@ -36,25 +27,16 @@ function Home() {
         </Container>
         <Container>
           <TimerWrapper>
-            <Button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.8 }}
+            <ControlButton
               onClick={toggleIsTimerPlaying}
-            >
-              <ButtonIcon icon={!isTimerPlaying ? faPlay : faPause} />
-            </Button>
+              isTimerPlaying={isTimerPlaying}
+            />
           </TimerWrapper>
         </Container>
         <Container>
           <TimerWrapper>
-            <Counter>
-              <CounterLabel>0/{ROUND_LIMIT}</CounterLabel>
-              <CounterLabel>ROUND</CounterLabel>
-            </Counter>
-            <Counter>
-              <CounterLabel>0/{GOAL_LIMIT}</CounterLabel>
-              <CounterLabel>GOAL</CounterLabel>
-            </Counter>
+            <Counter label="round" value={roundCount} />
+            <Counter label="goal" value={goalCount} />
           </TimerWrapper>
         </Container>
       </Wrapper>
