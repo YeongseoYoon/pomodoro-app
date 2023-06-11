@@ -1,5 +1,5 @@
 import { TimerBox, ControlButton, Counter } from "../components";
-import { TimerColonCard } from "../components/timer/Timer.styled";
+import { TimerColonCard } from "../components/timer/Timer.styled.ts";
 import { GOAL_TOTAL, ROUND_TOTAL } from "../constants/constants.ts";
 import { useTimer, useCounter } from "../hooks";
 import { Wrapper, Container, TimerWrapper } from "./Home.styled";

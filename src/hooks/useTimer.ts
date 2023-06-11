@@ -14,7 +14,6 @@ const useTimer = () => {
   const resetTimer = () => {
     setTime(TIME * 60);
     setIsTimerPlaying(false);
-    //
   };
 
   useEffect(() => {
