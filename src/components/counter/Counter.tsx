@@ -2,7 +2,7 @@ import { CounterWrapper, CounterLabel } from "./Counter.styled.ts";
 import { GOAL_TOTAL, ROUND_TOTAL } from "../../constants/constants.ts";
 
 interface CounterProps {
-  label: string;
+  label: "round" | "goal";
   value: number;
 }
 
