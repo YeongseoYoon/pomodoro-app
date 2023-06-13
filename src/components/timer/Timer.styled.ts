@@ -15,10 +15,3 @@ export const TimerCard = styled(motion.div)`
   background-color: white;
   border-radius: 10px;
 `;
-
-export const TimerColonCard = styled(TimerCard)`
-  width: auto;
-  border-radius: 0px;
-  color: white;
-  background-color: tomato;
-`;

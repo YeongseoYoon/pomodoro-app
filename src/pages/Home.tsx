@@ -1,8 +1,12 @@
 import { TimerBox, ControlButton, Counter } from "../components";
-import { TimerColonCard } from "../components/timer/Timer.styled.ts";
 import { GOAL_TOTAL, ROUND_TOTAL } from "../constants/constants.ts";
 import { useTimer, useCounter } from "../hooks";
-import { Wrapper, Container, TimerWrapper } from "./Home.styled";
+import {
+  Wrapper,
+  Container,
+  TimerWrapper,
+  TimerColonCard,
+} from "./Home.styled";
 
 function Home() {
   const { time, toggleIsTimerPlaying, isTimerPlaying } = useTimer();
@@ -16,31 +20,29 @@ function Home() {
   });
 
   return (
-    <>
-      <Wrapper>
-        <Container>
-          <TimerWrapper>
-            <TimerBox label="minute" time={time} />
-            <TimerColonCard>:</TimerColonCard>
-            <TimerBox label="second" time={time} />
-          </TimerWrapper>
-        </Container>
-        <Container>
-          <TimerWrapper>
-            <ControlButton
-              onClick={toggleIsTimerPlaying}
-              isTimerPlaying={isTimerPlaying}
-            />
-          </TimerWrapper>
-        </Container>
-        <Container>
-          <TimerWrapper>
-            <Counter label="round" value={roundCount} />
-            <Counter label="goal" value={goalCount} />
-          </TimerWrapper>
-        </Container>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Container>
+        <TimerWrapper>
+          <TimerBox label="minute" time={time} />
+          <TimerColonCard>:</TimerColonCard>
+          <TimerBox label="second" time={time} />
+        </TimerWrapper>
+      </Container>
+      <Container>
+        <TimerWrapper>
+          <ControlButton
+            onClick={toggleIsTimerPlaying}
+            isTimerPlaying={isTimerPlaying}
+          />
+        </TimerWrapper>
+      </Container>
+      <Container>
+        <TimerWrapper>
+          <Counter label="round" value={roundCount} />
+          <Counter label="goal" value={goalCount} />
+        </TimerWrapper>
+      </Container>
+    </Wrapper>
   );
 }
 
